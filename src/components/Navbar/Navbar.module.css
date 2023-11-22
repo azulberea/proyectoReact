@@ -1,0 +1,29 @@
+.flex{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: pink;
+}
+.brand{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: pink;
+}
+.rosa{
+    color: pink;
+}
+.margin{
+    margin-left: 1em;
+}
+.resize{
+    width: 20%;
+    height: 10%;
+}
