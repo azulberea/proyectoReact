@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .flex{
     margin: 0;
     padding: 0;
@@ -6,7 +10,11 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: pink;
+    background-color: #FFD1DA;
+}
+.categories{
+    display: flex;
+    align-items: center;
 }
 .brand{
     margin: 0;
@@ -15,15 +23,17 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    background-color: pink;
+    background-color: #FFD1DA;
 }
 .rosa{
-    color: pink;
+    color: #FFD1DA;
 }
 .margin{
     margin-left: 1em;
 }
 .resize{
-    width: 20%;
-    height: 10%;
+    height: 150px;
+}
+.logo{
+    font-size: xx-large;
 }

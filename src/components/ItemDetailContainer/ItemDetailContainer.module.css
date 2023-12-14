@@ -1,0 +1,4 @@
+.itemDetail{
+    display: flex;
+    flex-wrap: wrap;
+}
