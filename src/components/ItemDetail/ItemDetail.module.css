@@ -1,0 +1,9 @@
+.margins{
+    margin-bottom: 30px;
+}
+
+.productInfo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

@@ -1,35 +1,35 @@
 import { getItemById } from "../../asyncMock" 
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import estilos from "../ItemDetailContainer/ItemDetailContainer.module.css"
+import ItemDetail from "../ItemDetail/ItemDetail"
+import Loader from "../Loader/Loader"
 
 const ItemDetailContainer = ()=>{
 
+    const [load, setLoad] = useState(true)
     const [item, setItem] = useState("")
     const {itemId} = useParams()
-    
 
-    useEffect(()=>{
-        getItemById(itemId)
-            .then(response =>{
-                setItem(response)
-            })
-    },[itemId])
+    useEffect(()=>{ 
+        
+        setLoad(true)
+
+
+
+            getItemById(itemId)
+                .then((response)=>{
+                    setItem(response)
+                }).finally(()=>setLoad(false))
+        },[itemId])
+
+        if(load){
+            return(
+                <Loader />
+            )
+        }
 
     return(
-        <div>
-            <h1>detalle del producto</h1>
-            <div>
-                <img src={item.img}/>
-            </div>
-            <div>
-                <h1>{item.name}</h1>
-                <p>${item.price}</p>
-                <p>{item.description}</p>
-                <p>stock:{item.stock}</p>
-                <button>agregar al carrito</button>
-            </div>
-        </div>
+        <ItemDetail item={item}/>
     )
 }
 

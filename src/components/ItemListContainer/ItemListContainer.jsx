@@ -6,11 +6,13 @@ import { useParams } from "react-router-dom"
 import Loader from "../Loader/Loader"
 
 
-const ItemListContainer = ({ greeting })=>{
+const ItemListContainer = ()=>{
 
     const [products, setProducts] = useState([])
     const [load, setLoad] = useState(true)
     const { categoryId } = useParams()
+
+    
 
     useEffect(()=>{
         
@@ -30,9 +32,17 @@ const ItemListContainer = ({ greeting })=>{
         )
     }
 
+    const getGreeting = ()=>{
+        if(categoryId){
+            return `${categoryId.toLocaleUpperCase('es-ES')}`
+        }else{
+            return `Bienvenidos a sanrioStore`
+        }
+    }
+
     return(
         <div>
-            <h1 className={estilos.saludo}>{greeting}</h1>
+            <h1 className={estilos.saludo}>{getGreeting()}</h1>
             <div className={estilos.itemListContainer}>
                 <ItemList products={products}></ItemList>
             </div>
