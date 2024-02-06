@@ -1,9 +1,10 @@
 import estilos from "./ItemListContainer.module.css"
-import { getItemById, getItems, getItemsByCategory } from "../../asyncMock" 
 import { useEffect, useState } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import Loader from "../Loader/Loader"
+import { getDocs, collection, query, where } from "firebase/firestore"
+import { db } from "../../services/firebase/firebaseConfig"
 
 
 const ItemListContainer = ()=>{
@@ -15,15 +16,27 @@ const ItemListContainer = ()=>{
     
 
     useEffect(()=>{
-        
+
         setLoad(true)
+        
+        const collectionRef = categoryId 
+            ? query(collection(db, 'products'), where('category', '==', categoryId))
+            : collection(db, 'products')
 
-        const asyncFunction = categoryId ? getItemsByCategory : getItems
-
-        asyncFunction(categoryId)
-        .then((Response)=>{
-            setProducts(Response)
-        }).finally(()=>setLoad(false))
+        getDocs(collectionRef)
+            .then(QuerySnapshot => {
+                const productsAdapted = QuerySnapshot.docs.map(doc=>{
+                    const fields = doc.data()
+                    return { id: doc.id, ...fields}
+                })
+                setProducts(productsAdapted)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+            .finally(()=>{
+                setLoad(false)
+            })
     },[categoryId]) 
 
     if(load){
@@ -39,6 +52,7 @@ const ItemListContainer = ()=>{
             return `Bienvenidos a sanrioStore`
         }
     }
+
 
     return(
         <div>

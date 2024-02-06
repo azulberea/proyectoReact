@@ -1,0 +1,99 @@
+.wrapper {
+    --input-focus: #571548;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #f8c3f8;
+    --main-color: #240f15;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 4rem;
+}
+  /* card */ 
+
+.flipCardInner {
+    width: 300px;
+    height: 350px;
+    position: relative;
+    background-color: transparent;
+    perspective: 1000px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flipCardFront {
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgb(255, 178, 220);
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+}
+
+.flipCardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.title {
+    margin: 20px 0 20px 0;
+    font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.flipCardInput {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+}
+
+.flipCardInput::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+}
+
+.flipCardInput:focus {
+    border: 2px solid var(--input-focus);
+}
+
+.flipCardBtn:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+}
+
+.flipCardBtn {
+    margin: 20px 0 20px 0;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+} 
+.ordenConfirmada{
+    margin: 4rem 5rem;
+    text-align: center;
+}

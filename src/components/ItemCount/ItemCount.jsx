@@ -1,39 +1,8 @@
 import { useState } from "react"
 import estilos from "./ItemCount.module.css"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css";
 
-
-const ItemCount = ({ stock })=> {
+const ItemCount = ({ stock, onAdd })=> {
     const [count, setCount] = useState(1)
-    
-    const toastStock = () => {
-        toast.warn(`😿 Stock insuficiente. Se ha actualizado la cantidad a ${stock}`, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            });
-    }
-
-    const toastProductoAgregado = ()=>{
-        toast('🎀 Producto agregado al carrito correctamente!', {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            });
-    }
-
-
     
 
     const decrementar = ()=>{
@@ -57,30 +26,15 @@ const ItemCount = ({ stock })=> {
         }
     }
 
-    const handleInputBlur = (event)=>{
-        const inputValue = parseInt(event.target.value);
-        if(inputValue>stock){
-            console.log("stock insuficiente")
-        }
-    }
-
-    const onAdd = ()=>{
-        if(count <= stock){
-            (setCount(1), toastProductoAgregado())
-        }else{
-            (setCount(stock), toastStock())
-        }
-    }
 
     return (
         <div style={{marginTop:20, marginBottom:20}}>
             <div style={{display:"flex",flexDirection:"row"}}>
                 <button className={estilos.button} onClick={decrementar}>-</button>
-                <input style={{color:"black",width:50}} value={count} readOnly={false} disabled={false} onBlur={handleInputBlur} onChange={handleInputChange}></input>
+                <input style={{color:"black",width:50}} value={count} readOnly={false} disabled={false} onChange={handleInputChange}></input>
                 <button className={estilos.button} onClick={incrementar}>+</button>
             </div>
-            <button className={estilos.buttonCarrito} onClick={onAdd}>AGREGAR AL CARRITO</button>
-            <ToastContainer />     
+            <button className={estilos.buttonCarrito} onClick={()=>{count <= stock ? setCount(1) : setCount(stock); onAdd(count)}}>AGREGAR AL CARRITO</button>    
         </div>
     )
 
@@ -88,3 +42,5 @@ const ItemCount = ({ stock })=> {
 }
 
 export default ItemCount
+
+

@@ -1,0 +1,54 @@
+.carritoCard {
+    width: 25rem;
+    height: 8rem;
+    border-radius: 20px;
+    position: relative;
+    padding: 1rem;
+    border: 2px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(238, 148, 208, 0.466);
+    text-align: center;
+}
+.carritoCard img {
+    height: 60%;
+    object-fit: cover;
+    border-radius: 100px;
+}
+.carritoCard:hover {
+    border-color: #181717;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    background-position: 50%;
+}
+.carritoCard:hover button {
+    transform: translate(-50%, 50%);
+    opacity: 1;
+}
+.carritoCard button {
+    transform: translate(-50%, 125%);
+    width: 20%;
+    border-radius: 1rem;
+    border: none;
+    background-color: rgb(65, 61, 61);
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    left: 105%;
+    bottom: 50%;
+    opacity: 0;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+}
+.carritoCard div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carritoCard div p {
+    margin: 5px;
+    padding: 0;
+    color: rgb(0, 0, 0) !important;
+}
